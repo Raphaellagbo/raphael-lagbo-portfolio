@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Learning Recommendation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">ML Learning System</h1>
+            <nav class="nav" id="navigation" style="display: none;">
+                <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                <button class="nav-btn" data-section="profile">My Profile</button>
+                <button class="nav-btn" data-section="recommendations">Recommendations</button>
+                <button class="nav-btn logout-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Notification Area -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Login Section -->
+    <section class="login-section" id="loginSection">
+        <div class="container">
+            <div class="login-card">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your personalized learning dashboard</p>
+                
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <button class="btn btn-google" id="googleSignIn">
+                    <span class="google-icon">G</span>
+                    Sign in with Google
+                </button>
+
+                <div class="demo-section">
+                    <p>Demo Access:</p>
+                    <button class="btn btn-demo" id="demoLogin">Try Demo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section" id="dashboardSection" style="display: none;">
+        <div class="container">
+            <!-- Dashboard View -->
+            <div class="dashboard-view" id="dashboardView">
+                <div class="welcome-banner">
+                    <h2>Welcome back, <span id="userName">Student</span>!</h2>
+                    <p>Here's your personalized learning analysis</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Overall Progress</h3>
+                        <div class="progress-circle" id="overallProgress">
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Subjects Analyzed</h3>
+                        <div class="stat-number" id="subjectsCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Recommendations</h3>
+                        <div class="stat-number" id="recommendationsCount">0</div>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h3>Weakness Analysis</h3>
+                    <div class="analysis-chart" id="analysisChart">
+                        <p class="loading">Analyzing your performance...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile View -->
+            <div class="profile-view" id="profileView" style="display: none;">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <span id="profileInitials">S</span>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profileName">Student Name</h2>
+                            <p id="profileEmail">student@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <label>Learning Streak</label>
+                            <span id="learningStreak">0 days</span>
+                        </div>
+                        <div class="profile-stat">
+                            <label>Total Study Time</label>
+                            <span id="studyTime">0 hours</span>
+                        </div>
+                        <div class="profile-stat">
+                            <label>Completed Lessons</label>
+                            <span id="completedLessons">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations View -->
+            <div class="recommendations-view" id="recommendationsView" style="display: none;">
+                <h2>Personalized Recommendations</h2>
+                <p>Based on your weakness analysis, here are tailored learning resources:</p>
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <p class="loading">Loading recommendations...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing your data...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="ml.js"></script>
+    <script src="recommendation.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
